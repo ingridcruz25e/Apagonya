@@ -1,0 +1,2 @@
+using Microsoft.AspNetCore.Authorization; using Microsoft.AspNetCore.Mvc; using Google.Cloud.Firestore; using UserHub.Models;
+namespace UserHub.Controllers; [ApiController][Route("api/[controller]")][Authorize] public class ZoneController:ControllerBase{readonly FirestoreDb db;public ZoneController(FirestoreDb db)=>this.db=db;[HttpGet]public async Task<IEnumerable<Zone>> Get(){var s=await db.Collection("zones").GetSnapshotAsync();return s.Documents.Select(d=>d.ConvertTo<Zone>());}}

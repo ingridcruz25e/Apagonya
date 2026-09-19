@@ -1,0 +1,2 @@
+using Microsoft.AspNetCore.Mvc;using Google.Cloud.Firestore;using UserHub.Models;
+namespace UserHub.Controllers;[ApiController][Route("api/[controller]")]public class SetupController:ControllerBase{readonly FirestoreDb db;public SetupController(FirestoreDb db)=>this.db=db;[HttpPost("zones")]public async Task<IActionResult> Seed(){var zones=new[]{new Zone{Id="zona-centro",Nombre="Centro"},new Zone{Id="zona-norte",Nombre="Zona Norte"},new Zone{Id="zona-sur",Nombre="Zona Sur"}};foreach(var z in zones)await db.Collection("zones").Document(z.Id).SetAsync(z);return Ok(zones);}}

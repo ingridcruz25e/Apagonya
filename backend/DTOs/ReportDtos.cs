@@ -1,0 +1,1 @@
+namespace UserHub.DTOs; public class CreateReportDto{public string ZonaId{get;set;}="";public string Direccion{get;set;}="";public DateTime HoraInicio{get;set;}public string EvidenciaUrl{get;set;}="";} public class ResolveReportDto{public string Causa{get;set;}="";public DateTime HoraRestablecimiento{get;set;}public string Detalle{get;set;}="";}

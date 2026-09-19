@@ -1,0 +1,8 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/.angular/
+**/.vscode/*.log
+backend/firebase-credentials.json
+frontend/dist/
+frontend/.firebase/

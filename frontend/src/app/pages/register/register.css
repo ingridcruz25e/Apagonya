@@ -1,0 +1,33 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+mat-card{
+  width: 400px;
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.error{
+  color: red;
+  font-size: 14px;
+}
+
+.success{
+  color: green;
+  font-size: 14px;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

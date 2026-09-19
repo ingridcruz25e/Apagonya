@@ -1,0 +1,63 @@
+<div class="notes-container">
+  <div class="header">
+    <h1>Mis Notas</h1>
+    <button mat-raised-button color="warn" (click)="onLogout()">
+      Cerrar sesión
+    </button>
+  </div>
+
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Nueva nota</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput type="text" [(ngModel)]="title" placeholder="¿De qué trata la nota?" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Contenido</mat-label>
+        <textarea matInput rows="3" [(ngModel)]="content" placeholder="Escribe tu nota aquí..."></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Etiqueta</mat-label>
+        <input matInput type="text" [(ngModel)]="tag" placeholder="trabajo, personal, estudio..." />
+      </mat-form-field>
+
+      @if (errorMessage) {
+        <p class="error">{{ errorMessage }}</p>
+      }
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onCreate()" [disabled]="isLoading">
+        {{ isLoading ? 'Guardando...' : 'Crear nota' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <h2>Historial</h2>
+
+  @if (notes.length === 0) {
+    <p class="empty">Aún no tienes notas. ¡Crea una!</p>
+  }
+
+  @for (note of notes; track note.id) {
+    <mat-card class="note-card">
+      <mat-card-content>
+        <div class="note-header">
+          <h3>{{ note.title }}</h3>
+
+        </div>
+        <p class="note-content">{{ note.content }}</p>
+        <div class="note-footer">
+          <span class="tag">{{ note.tag }}</span>
+          <small>{{ note.createdAt | date:'short' }}</small>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  }
+
+</div>
